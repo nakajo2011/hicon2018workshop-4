@@ -1,0 +1,37 @@
+{
+  "name": "hicon2018workshop-4",
+  "version": "1.0.0",
+  "description": "",
+  "main": "truffle.js",
+  "directories": {
+    "test": "test"
+  },
+  "scripts": {
+    "test": "truffle test"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/nakajo2011/hicon2018workshop-4.git"
+  },
+  "author": "Yukishige Nakajo <nakajo@chaintope.com> (http://y-nakajo.hatenablog.com/)",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/nakajo2011/hicon2018workshop-4/issues"
+  },
+  "homepage": "https://github.com/nakajo2011/hicon2018workshop-4#readme",
+  "babel": {
+    "presets": [
+      "env"
+    ]
+  },
+  "devDependencies": {
+    "babel-polyfill": "^6.26.0",
+    "babel-register": "^6.26.0",
+    "lk-test-helpers": "^0.1.7",
+    "babel-preset-env": "^1.7.0",
+    "openzeppelin-solidity": "^2.0.0",
+    "sol-trace": "github:nakajo2011/sol-trace#pre_release"
+  },
+  "dependencies": {
+  }
+}
