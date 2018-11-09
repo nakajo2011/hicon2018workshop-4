@@ -36,7 +36,7 @@ contract('PassManager', function(accounts) {
       const beforeBalance = await educationPass.balanceOf(accounts[0])
       assert.equal(0, beforeBalance)
 
-      await educationPass.mint(accounts[0], 12345)
+      await manager.issue(accounts[0], 12345)
       const afterBalance = await educationPass.balanceOf(accounts[0])
       assert.equal(1, afterBalance)
     })

@@ -23,7 +23,7 @@ contract EducationPass is ERC721, ERC721Metadata, Ownable {
   function mint(address _to, uint256 _uportId) public onlyOwner {
     require(_to != address(0), "_to is zero.");
     if (_exists(_uportId)) {
-      require(!_expired(_uportId), "the token activate yet.");
+      require(_expired(_uportId), "the token activate yet.");
       _removeTokenFrom(_to, _uportId);
       emit Extended(_to, _uportId);
     }
@@ -47,6 +47,6 @@ contract EducationPass is ERC721, ERC721Metadata, Ownable {
    * @return whether the token exists and not expired
    */
   function _expired(uint256 _tokenId) internal view returns (bool) {
-    return now < expireDates[_tokenId];
+    return now >= expireDates[_tokenId];
   }
 }
