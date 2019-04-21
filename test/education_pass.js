@@ -1,4 +1,7 @@
 import lkTestHelpers from 'lk-test-helpers'
+import { injectInTruffle } from 'sol-trace'
+injectInTruffle(web3, artifacts)
+
 const {
   increaseTime,
   shouldFail,
@@ -101,7 +104,6 @@ contract('EducationPass', function(accounts) {
     })
     it('happend event', async () => {
       const educationPass = await EducationPass.new()
-      const filter = await educationPass.Extended({}, { fromBlock: 0, toBlock: 'latest' }, callback)
       await educationPass.mint(accounts[0], 12345)
       const exists = await educationPass.exists(12345)
       await increaseTime((1 * 365 * 24 * 60 * 60) + 2000)
@@ -109,8 +111,8 @@ contract('EducationPass', function(accounts) {
       assert.isFalse(expiredExists)
 
       await educationPass.mint(accounts[0], 12345)
-      const events = filter.get()
 
+      const events = await educationPass.getPastEvents('Extended', {fromBlock: 0})
       assert.equal(1, events.length)
       assert.equal(accounts[0], events[0].args.student)
       assert.equal(12345, events[0].args.tokenId)

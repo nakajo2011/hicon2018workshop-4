@@ -1,4 +1,4 @@
-pragma solidity ^0.4.22;
+pragma solidity >0.4.99 <0.6.0;
 
 
 import "./MultiOwner.sol";
@@ -17,7 +17,7 @@ contract PassManager is MultiOwner {
    * @dev Throws if inited.
    */
   modifier yetInit() {
-    require(address(token) == 0x0);
+    require(address(token) == address(0x0));
     _;
   }
 
@@ -25,7 +25,7 @@ contract PassManager is MultiOwner {
   }
 
   function tokenAddress() public view returns(address) {
-    return token;
+    return address(token);
   }
 
   /**
@@ -43,7 +43,7 @@ contract PassManager is MultiOwner {
    * @param _uportId The uportId of student.
    */
   function issue(address _to, uint256 _uportId) public onlyOwner {
-    require(address(token) != 0x0, "not yet init.");
+    require(address(token) != address(0x0), "not yet init.");
     token.mint(_to, _uportId);
   }
 }
