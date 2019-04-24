@@ -1,6 +1,4 @@
 import lkTestHelpers from 'lk-test-helpers'
-import { injectInTruffle } from 'sol-trace'
-injectInTruffle(web3, artifacts)
 
 const {
   increaseTime,
